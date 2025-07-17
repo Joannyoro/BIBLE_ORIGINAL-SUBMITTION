@@ -1,0 +1,143 @@
+
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Notes</title>
+  <style>
+    body {
+      background: linear-gradient(to right, #E0FFFF, #AFEEEE);
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      padding: 40px;
+      margin: 0;
+      color: #333;
+    }
+    .home-button {
+      display: inline-block;
+      background-color: #000000;
+      padding: 10px 18px;
+      border-radius: 12px;
+      text-decoration: none;
+      color: #f8f5f5;
+      font-weight: bold;
+      font-size: 16px;
+      margin-bottom: 20px;
+      transition: background-color 0.3s ease, transform 0.2s;
+    }
+
+    .home-button:hover {
+      background-color: #FFC107;
+      transform: scale(1.05);
+    }
+    .home-button:active {
+      transform: scale(0.97);
+    }
+
+    h2 {
+      text-align: center;
+      font-size: 2em;
+      color: #444;
+      margin-bottom: 20px;
+    }
+
+    .container {
+      max-width: 700px;
+      margin: auto;
+      background-color: #ffffffcc;
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+    }
+
+    textarea {
+      width: 100%;
+      height: 450px; 
+      border: 2px solid #ccc;
+      border-radius: 12px;
+      padding: 15px;
+      font-size: 18px;
+      resize: vertical;
+      box-sizing: border-box;
+      outline: none;
+      transition: border-color 0.3s ease;
+    }
+
+    textarea:focus {
+      border-color: #b29720;
+    }
+
+    .buttons {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    button {
+      background-color: #FFD700;
+      border: none;
+      padding: 14px 24px;
+      margin: 0 12px;
+      border-radius: 12px;
+      font-weight: bold;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s;
+    }
+
+    button:hover {
+      background-color: #FFC107;
+      transform: scale(1.05);
+    }
+
+    button:active {
+      transform: scale(0.97);
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        padding: 15px;
+      }
+
+      button {
+        width: 100%;
+        margin: 10px 0;
+      }
+
+      textarea {
+        height: 350px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <a href="Bible.html" class="home-button">🏠 Home</a>
+  
+  <div class="container">
+    <h2>📝 Your Notes</h2>
+    <textarea id="notes" placeholder="Write your big thoughts here..."></textarea>
+    <div class="buttons">
+      <button onclick="downloadNotes()">📥 Download</button>
+      <button onclick="clearNotes()">🗑️ Clear</button>
+    </div>
+  </div>
+
+  <script>
+    function downloadNotes() {
+      const notes = document.getElementById('notes').value;
+      const blob = new Blob([notes], { type: 'text/plain' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = 'notes.txt';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    }
+
+    function clearNotes() {
+      document.getElementById('notes').value = '';
+    }
+  </script>
+  
+</body>
+</html>

@@ -1,0 +1,183 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Bible Flashcards for Kids</title>
+  <style>
+    body {
+      background: linear-gradient(to bottom, #FFEFD5, #FFF8DC);
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      text-align: center;
+      padding: 20px;
+      margin: 0;
+      color: #333;
+    }
+    #flashcard-container {
+      background: #FFFFE0;
+      border: 3px solid #FFD700;
+      border-radius: 16px;
+      width: 500px;
+      height: 400px;
+      max-width: 90%;
+      margin: 40px auto;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    #question {
+      font-size: 1.4rem;
+      margin-bottom: 20px;
+    }
+    .choice-button {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      margin: 6px 0;
+      font-size: 1rem;
+      background: #FFFAF0;
+      border: 2px solid #FFD700;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.1s;
+    }
+    .choice-button:hover {
+      background: #FFF8DC;
+      transform: scale(1.02);
+    }
+    .home-button {
+  display: inline-block;
+  background: linear-gradient(135deg, #ffef8a, #ffd23a);
+  color: #333;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 12px 20px;
+  border-radius: 12px;
+  text-decoration: none;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  transition: 
+    background 0.3s ease, 
+    transform 0.2s ease, 
+    box-shadow 0.2s ease;
+}
+
+.home-button:hover {
+  background: linear-gradient(135deg, #fff397, #ffca3a);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+}
+
+.home-button:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+}
+
+.home-button:focus {
+  outline: none;
+  box-shadow: 0 0 0 4px rgba(255,210,50,0.5);
+}
+
+    #feedback {
+      font-size: 1.1rem;
+      margin: 16px 0;
+      min-height: 24px;
+    }
+    #next-btn {
+      background: #ADFF2F;
+      border: none;
+      padding: 10px 18px;
+      font-size: 1rem;
+      border-radius: 12px;
+      cursor: pointer;
+      display: none;
+      transition: background 0.2s, transform 0.1s;
+    }
+    #next-btn:hover {
+      background: #90EE90;
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🧠 Bible Flashcards</h1>
+  
+  <div id="flashcard-container">
+    <div id="question">Loading...</div>
+    <div id="choices"></div>
+    <div id="feedback"></div>
+    <button id="next-btn" onclick="nextQuestion()">➡️ Next</button>
+  </div>
+
+  <a href="Bible.html" class="home-button">🏠 Home</a>
+
+  <script>
+    const questions = [
+      { q: "Who built the ark?",           c: ["Moses","Abraham","Noah","David"],           a: 2 },
+      { q: "What did Daniel get thrown into?", c: ["Lion's den","Fiery furnace","Deep well","Dungeon"], a: 0 },
+      { q: "How many days and nights did it rain?", c: ["7","40","12","100"], a: 1 },
+      { q: "Who was swallowed by a big fish?", c: ["Jonah","Peter","Saul","Elijah"], a: 0 },
+      { q: "Where was Jesus born?",         c: ["Nazareth","Bethlehem","Jerusalem","Galilee"],  a: 1 },
+      { q: "Who received the Ten Commandments?", c: ["Aaron","Noah","Moses","Joshua"],     a: 2 },
+      { q: "Who turned water into wine?",   c: ["Peter","John","Jesus","Paul"],           a: 2 },
+      { q: "What did David use to defeat Goliath?", c: ["Sword","Spear","Sling and stone","Bow"], a: 2 },
+      { q: "Who was the strongest man?",    c: ["Samson","Gideon","Abel","Jacob"],        a: 0 },
+      { q: "How many brothers did Joseph have?", c: ["10","11","12","13"],               a: 1 },
+      { q: "What did the Israelites cross to escape Egypt?", c: ["Jordan River","Red Sea","Dead Sea","Euphrates"], a: 1 },
+      { q: "Who was the first man?",        c: ["Adam","Noah","Abraham","Isaac"],        a: 0 },
+      { q: "Who was the first woman?",      c: ["Eve","Sarah","Rebekah","Rachel"],       a: 0 },
+      { q: "Where did Abraham live?",       c: ["Ur","Rome","Babylon","Canaan"],         a: 0 },
+      { q: "What creature tempted Eve?",    c: ["Serpent","Lion","Eagle","Ox"],          a: 0 },
+      { q: "Who betrayed Jesus?",           c: ["Judas","Peter","John","Thomas"],        a: 0 },
+      { q: "How many days did Jesus fast?", c: ["7","14","30","40"],                    a: 3 },
+      { q: "Who walked on water?",          c: ["Peter","Jesus","Moses","Elijah"],       a: 1 },
+      { q: "Who is the Good Samaritan?",    c: ["A merchant","A stranger","A Samaritan","A priest"], a: 2 },
+      { q: "What is the shortest verse in the Bible?", c: ["Jesus wept","Pray without ceasing","I am","Rejoice always"], a: 0 }
+    ];
+
+    let current = 0;
+
+    function loadQuestion() {
+      const { q, c } = questions[current];
+      document.getElementById('question').innerText = q;
+      const choicesDiv = document.getElementById('choices');
+      choicesDiv.innerHTML = '';
+      c.forEach((text, i) => {
+        const btn = document.createElement('button');
+        btn.innerText = text;
+        btn.className = 'choice-button';
+        btn.onclick = () => selectAnswer(i);
+        choicesDiv.appendChild(btn);
+      });
+      document.getElementById('feedback').innerText = '';
+      document.getElementById('next-btn').style.display = 'none';
+    }
+
+    function selectAnswer(i) {
+      const { c, a } = questions[current];
+      const fb = document.getElementById('feedback');
+      if (i === a) {
+        fb.innerText = "🎉 Correct!";
+        fb.style.color = "green";
+      } else {
+        fb.innerText = `❌ Oops! The right answer is "${c[a]}".`;
+        fb.style.color = "red";
+      }
+      document.getElementById('next-btn').style.display = 'inline-block';
+    }
+
+    function nextQuestion() {
+      current++;
+      if (current < questions.length) {
+        loadQuestion();
+      } else {
+        document.getElementById('flashcard-container').innerHTML =
+          "<h2>👏 You’ve finished all the cards! Great job!</h2>";
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', loadQuestion);
+  </script>
+
+</body>
+</html>

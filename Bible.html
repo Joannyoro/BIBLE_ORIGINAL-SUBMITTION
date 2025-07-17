@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Young disciples.com</title>
+
+</head>
+
+<style>body {
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  background: linear-gradient(135deg, #ffe6f0, #e6f7ff);
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  color: #333;
+}
+
+header {
+  background: #ffccff;
+  padding: 20px;
+  border-bottom: 5px dotted #ff66cc;
+}
+
+header h1 {
+  color: #ff3399;
+  font-size: 2.5rem;
+  text-shadow: 1px 1px 2px #fff;
+}
+
+header p {
+  color: #660066;
+  font-size: 1.1rem;
+}
+
+.quiz-button,
+.notes-button {
+  background: #ff99cc;
+  padding: 10px 20px;
+  border-radius: 12px;
+  color: #fff;
+  font-weight: bold;
+  text-decoration: none;
+  margin: 10px;
+  display: inline-block;
+  border: 2px solid #ff66b2;
+  transition: background 0.3s;
+}
+.quiz-button:hover,
+.notes-button:hover {
+  background: #ff66b2;
+}
+
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding: 10px;
+  gap: 20px;
+}
+
+.bible-card {
+  background: #ffffcc;
+  padding: 15px;
+  border-radius: 12px;
+  width: 200px;
+  box-shadow: 0 0 8px #ffccff;
+  transition: transform 0.2s;
+}
+.bible-card:hover {
+  transform: scale(1.05);
+}
+.bible-card h2 a {
+  color: #cc3366;
+  text-decoration: none;
+  font-size: 1.2rem;
+}
+.bible-card p {
+  color: #333;
+  font-size: 0.9rem;
+}
+
+footer {
+  background: #ffccff;
+  padding: 10px;
+  border-top: 5px dotted #ff66cc;
+  color: #660033;
+  margin-top: 20px;
+
+}
+.nav-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 25px;
+  flex-wrap: wrap; 
+}
+
+.icon {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;       
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s;
+  white-space: nowrap;     
+  width: auto;           
+}
+
+
+
+.icon:hover {
+  background-color: #333;
+  transform: scale(1.05);
+}
+.icon:active {
+  transform: scale(0.95);
+}
+.icon:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 105, 180, 0.5);
+}
+.icon:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+.icon:disabled:hover {
+  background-color: #ccc;
+  transform: none;
+}
+.icon:disabled:active {
+  transform: none;
+}
+
+body.dark-mode {
+  background: #141414; 
+  color: #f5e6f0; 
+}
+
+body.dark-mode header {
+  background: #5a003a;
+  border-bottom-color: #ff99cc;
+  color: white;
+}
+
+body.dark-mode header h1 {
+  color: white;
+  text-shadow: none;
+}
+
+body.dark-mode header p {
+  color: #ffccff;
+}
+
+
+body.dark-mode .bible-card {
+  background: #f072c03f; 
+  box-shadow: 0 0 8px #ff66b2;
+  color: white;
+}
+
+body.dark-mode .bible-card h2 a {
+  color: white;
+}
+
+body.dark-mode .bible-card p {
+  color: #ffcce6;
+}
+
+body.dark-mode footer {
+  background: #5a003a;
+  border-top-color: #ff99cc;
+  color: #ffccff;
+}
+
+body.dark-mode .icon {
+  background-color: #000;
+  color: #ffccff;
+  border: 2px solid #ff66b2;
+}
+
+body.dark-mode .icon:hover {
+  background-color: #ff66b2;
+  color: black;
+}
+
+</style>
+<body>
+<header>
+    <h1>📖 Kids Bible</h1>
+    <p>CLICK ON THE TITLES TO LEARN MORE</p>
+  </header>
+   <input type="checkbox" id="theme-toggle" style="display:none;" />
+<label for="theme-toggle" class="icon" title="Toggle Dark Mode" style="cursor:pointer;">🌓</label>
+
+
+<button class="icon" onclick="location.href='NOTES.html'">📝 Notes</button>
+<button class="icon" onclick="location.href='prayer.html'">🙏 Prayer</button>
+<button class="icon" onclick="location.href='question.html'">❓ Quiz</button>
+<a class="icon" href="learn.html">📺 Learn About God</a>
+ 
+ 
+  <div class="container">
+  <div class="bible-card">
+      <h2><a href="verse.html?verse=noah">🌈 Noah’s Ark</a></h2>
+      <p>“I have set my rainbow in the clouds…” — Genesis 9:13</p>
+    </div>
+
+    <div class="bible-card">
+      <h2><a href="verse.html?verse=good_samaritan">🧡 The Good Samaritan</a></h2>
+      <p>“Love your neighbor as yourself.” — Luke 10:27</p>
+    </div>
+
+    <div class="bible-card">
+      <h2><a href="verse.html?verse=jesus_loves_me">⭐ Jesus Loves Me</a></h2>
+      <p>“Let the little children come to me…” — Matthew 19:14</p>
+    </div>
+
+    <div class="bible-card">
+      <h2><a href="verse.html?verse=creation_story">🕊️ Creation Story</a></h2>
+      <p>“In the beginning, God created…” — Genesis 1:1</p>
+    </div>
+
+    <div class="bible-card">
+      <h2><a href="verse.html?verse=trust_in_god">🦋 Trust in God</a></h2>
+      <p>“Trust in the Lord…” — Proverbs 3:5</p>
+    </div>
+
+    <div class="bible-card">
+      <h2><a href="verse.html?verse=let_your_light_shine">☀️ Let Your Light Shine</a></h2>
+      <p>“You are the light of the world.” — Matthew 5:14</p>
+    </div>
+
+    <div class="bible-card">
+      <h2><a href="verse.html?verse=gods_love">🌼 God’s Love</a></h2>
+      <p>“For God so loved the world…” — John 3:16</p>
+    </div>
+
+    <div class="bible-card">
+      <h2><a href="verse.html?verse=be_kind">🌟 Be Kind</a></h2>
+      <p>“Be kind to one another…” — Ephesians 4:32</p>
+    </div>
+
+    <div class="bible-card">
+      <h2><a href="verse.html?verse=prayer_time">🌻 Prayer Time</a></h2>
+      <p>“Pray without ceasing.” — 1 Thessalonians 5:17</p>
+    </div>
+
+    <div class="bible-card">
+      <h2><a href="verse.html?verse=gods_creation">🌺 God’s Creation</a></h2>
+      <p>“God’s invisible qualities…” — Romans 1:20</p>
+    </div>
+
+    <div class="bible-card">
+      <h2><a href="verse.html?verse=gods_promises">🌈 God’s Promises</a></h2>
+      <p>“I know the plans I have for you…” — Jeremiah 29:11</p>
+    </div>
+
+    <div class="bible-card">
+      <h2><a href="verse.html?verse=gods_guidance">🌟 God’s Guidance</a></h2>
+      <p>“Your word is a lamp for my feet…” — Psalm 119:105</p>
+    </div>
+
+    <div class="bible-card">
+      <h2><a href="verse.html?verse=gods_strength">🌻 God’s Strength</a></h2>
+      <p>“I can do all this…” — Philippians 4:13</p>
+    </div>
+
+    <div class="bible-card">
+      <h2><a href="verse.html?verse=gods_joy">🌼 God’s Joy</a></h2>
+      <p>“The joy of the Lord is your strength.” — Nehemiah 8:10</p>
+    </div>
+
+  </div>
+  <footer>&copy; 2025 Young Disciples Bible. Made by JOAN NYORO❤️</footer>
+  <script>
+  const toggle = document.getElementById('theme-toggle');
+  toggle.addEventListener('change', () => {
+    document.body.classList.toggle('dark-mode', toggle.checked);
+  });
+</script>
+
+</body>
+</html>
